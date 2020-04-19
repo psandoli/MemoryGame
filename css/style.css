@@ -1,0 +1,218 @@
+@font-face {
+    font-family: Arcade;
+    src: url('fonts/ARCADECLASSIC.ttf');
+}
+
+body{
+	display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0 8px 0 8px;
+    justify-content: space-between;
+	font-family: Arcade;
+    overflow: hidden;
+}
+
+.menu{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    margin-left: -8px;
+    opacity: 1;
+    z-index: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+}
+
+#menu{
+    display: flex;
+    background-color: #F0FF79;
+}
+
+.menu h1{
+	color: #835b7f;
+	font-size: 50px;
+	margin: 0;
+}
+
+.menu h2{
+	color: #00c1b2;
+	font-size: 30px;
+}
+
+.play{
+	background-color: #efb1ff;
+	color: #f1075ddb;
+	cursor: pointer;
+	font-size: 40px;
+	font-family: Arcade;
+	padding: 10px;
+    box-shadow: 5px 5px 0 #f1075ddb;
+    border: none;
+}
+
+#board{
+    font-size: 50px;
+    padding: 16px;
+	display: flex;
+	justify-content: space-between;
+    height: 100%;
+    align-items: center;
+}
+
+#exit{
+	color: #f1075ddb;
+	cursor: pointer;
+}
+
+#score{
+    color: #00da2f;
+}
+
+#levels{
+    width: 40%;
+}
+
+.cards{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+#cards{
+    align-self: baseline;
+    height: min-content;
+}
+
+.scene{
+	width: 11.5vw;
+	height: 11.5vw;
+ 	perspective: 600px;
+ 	margin-bottom: 10px;
+}
+
+.scene-easy{
+	width: 15vw;
+	height: 15vw;
+ 	margin-bottom: 20px;
+}
+
+.card{
+	width: 100%;
+	height: 100%;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+	border-radius: 15px;
+ 	position: relative;
+	transition: transform 1s;
+	transform-style: preserve-3d;
+}
+
+.card.is-flipped {
+	transform: rotateY(180deg);
+}
+
+.card.permanent-flipped {
+	transform: rotateY(180deg);
+}
+
+.card.permanent-flipped .front {
+    opacity: 0.6;
+}
+
+.card-face{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	backface-visibility: hidden;
+	cursor: pointer;
+	border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.back{
+    background-color: #86dfd8;
+    font-size: 25px;
+	color: #f1075ddb;
+}
+
+.front{
+ 	transform: rotateY( 180deg );
+    background-color: #f1075ddb;
+    font-size: 16px;
+	color: #86dfd8;
+}
+
+.front h3{
+	font-size: 18px;
+	text-decoration: underline;
+}
+
+.front h3, .front p{
+	margin: 0;
+}
+
+.front img, .back img{
+	object-fit: cover;
+	border-radius: 15px;
+}
+
+.front img{
+	width: 100%;
+	height: 100%;
+}
+
+.back img{
+	width: 50%;
+	height: 50%;
+}
+
+#game-over{
+	display: none;
+	background-color: #90ff8a;
+}
+
+@media(max-width: 991px){
+	.scene{
+		width: 15vw;
+		height: 15vw;
+	}
+    #levels .scene{
+		width: 25vw;
+		height: 25vw;
+    }
+	#levels{
+	    width: 95%;
+	}
+	.scene-easy{
+	 	margin-bottom: 10px;
+	}
+}
+
+@media(max-width: 480px){
+	#board {
+    	font-size: 30px;
+   	}
+   	.front {
+    	font-size: 14px;
+    }
+   	.front h3 {
+    	display: none;
+    }
+	.scene{
+		width: 21vw;
+		height: 21vw;
+	}
+	.scene-easy{
+		width: 30vw;
+		height: 30vw;
+	}
+	.back {
+	    font-size: 16px;
+	}
+}
