@@ -7,7 +7,19 @@ var level = '';
 var totalMatches = 12;
 var success = 0;
 
+function play(){
+	if (level == ''){
+		alert('Selecione uma dificuldade!');
+	}else{
+		start();
+    	document.getElementById('menu').style.display = 'none';
+	}
+}
+
 function start(){
+	score = 0;
+	document.getElementById('score').innerHTML = score;
+
 	let uniqueImages = ['bird.jpg', 
 					'cat.jpg',
 					'dog.jpg', 
@@ -56,15 +68,6 @@ function start(){
 	}
 }
 
-function play(){
-	if (level == ''){
-		alert('Selecione uma dificuldade!');
-	}else{
-		start();
-    	document.getElementById('menu').style.display = 'none';
-	}
-}
-
 function flipLevelCard(element){
  	let flippedOnes = document.getElementsByClassName('is-flipped');
 
@@ -87,6 +90,8 @@ function flipCard(element){
 	 		let flippedOnes = document.getElementsByClassName('is-flipped');
 
 	 		if(currentImage == element.getAttribute('data-image') && currentId != element.getAttribute('id')){
+				score += level != 'hard' ? 5 : 10;
+				success++;
 		 		setTimeout(function () {
 		 			for (let i = flippedOnes.length - 1; i >= 0; i--) {
 					    flippedOnes[i].classList.add('permanent-flipped');
@@ -95,8 +100,6 @@ function flipCard(element){
 				    document.getElementById('score').innerHTML = score;
 					canFlip = true;
 			    }, 500);
-				score += level != 'hard' ? 5 : 10;
-				success++;
 	 		}else{
 				if (level == 'hard'){
 					score -= 5;
